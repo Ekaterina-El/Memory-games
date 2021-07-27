@@ -12,37 +12,29 @@
             type="ka.el.memorygames.viewModel.PlaygroundViewModel" />
     </data>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/bg"
+        android:orientation="vertical"
+        android:gravity="center"
         tools:context=".ui.playground.PlaygroundFragment">
-<!--
-        <ImageView
-            android:id="@+id/ditto"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:onClick="@{() -> fragment.count()}"
-            android:src="@drawable/ditto" />-->
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:id="@+id/rv_cards"
             />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
             android:text="@{(viewModel.movies &lt; 1) ? @string/move(viewModel.movies) : @string/movies(viewModel.movies)}"
             android:textColor="@color/main_text_color"
             android:textSize="18sp"
             tools:text="3 movies" />
 
 
-    </RelativeLayout>
+    </LinearLayout>
 </layout>
