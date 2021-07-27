@@ -22,7 +22,6 @@ class PlaygroundFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         binding = FragmentPlaygroundBinding.inflate(layoutInflater)
         return binding.root
     }
@@ -40,7 +39,9 @@ class PlaygroundFragment : Fragment() {
         recyclerView.layoutManager = GridLayoutManager(context, 4)
         recyclerView.addItemDecoration(GridItemDecoration(10, 4))
 
-        val playgroundAdapter = PlaygroundAdapter()
+        val playgroundAdapter = PlaygroundAdapter { cardModel ->
+            playgroundViewModel.addMovies()
+        }
         recyclerView.adapter = playgroundAdapter
         playgroundAdapter.setCardList(generateDummyData())
     }
@@ -48,23 +49,21 @@ class PlaygroundFragment : Fragment() {
     private fun generateDummyData(): List<CardModel> {
         val cards = mutableListOf<CardModel>()
 
-        cards.add(CardModel(R.id.ditto, false))
-        cards.add(CardModel(R.id.ditto, false))
-        cards.add(CardModel(R.id.ditto, false))
-        cards.add(CardModel(R.id.ditto, false))
-        cards.add(CardModel(R.id.ditto, false))
-        cards.add(CardModel(R.id.ditto, false))
-        cards.add(CardModel(R.id.ditto, false))
-        cards.add(CardModel(R.id.ditto, false))
-        cards.add(CardModel(R.id.ditto, false))
-        cards.add(CardModel(R.id.ditto, false))
-        cards.add(CardModel(R.id.ditto, false))
-        cards.add(CardModel(R.id.ditto, false))
+        cards.add(CardModel(resources.getDrawable(R.drawable.ditto), false))
+        cards.add(CardModel(resources.getDrawable(R.drawable.ditto), false))
+        cards.add(CardModel(resources.getDrawable(R.drawable.ditto), false))
+        cards.add(CardModel(resources.getDrawable(R.drawable.ditto), false))
+        cards.add(CardModel(resources.getDrawable(R.drawable.ditto), false))
+        cards.add(CardModel(resources.getDrawable(R.drawable.ditto), false))
+        cards.add(CardModel(resources.getDrawable(R.drawable.ditto), false))
+        cards.add(CardModel(resources.getDrawable(R.drawable.ditto), false))
+        cards.add(CardModel(resources.getDrawable(R.drawable.ditto), false))
+        cards.add(CardModel(resources.getDrawable(R.drawable.ditto), false))
+        cards.add(CardModel(resources.getDrawable(R.drawable.ditto), false))
+        cards.add(CardModel(resources.getDrawable(R.drawable.ditto), false))
 
         return cards
     }
 
-    fun count() {
-        playgroundViewModel.addMovies()
-    }
+
 }
