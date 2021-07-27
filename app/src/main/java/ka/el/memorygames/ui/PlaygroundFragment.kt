@@ -5,16 +5,35 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import ka.el.memorygames.R
+import androidx.fragment.app.activityViewModels
+import ka.el.memorygames.databinding.FragmentPlaygroundBinding
+import ka.el.memorygames.viewModel.PlaygroundViewModel
 
 
 class PlaygroundFragment : Fragment() {
+    private lateinit var binding: FragmentPlaygroundBinding
+    private val playgroundViewModel: PlaygroundViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_playground, container, false)
+        binding = FragmentPlaygroundBinding.inflate(layoutInflater)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.apply {
+            viewModel = this@PlaygroundFragment.playgroundViewModel
+            lifecycleOwner = viewLifecycleOwner
+            fragment = this@PlaygroundFragment
+        }
+    }
+
+    fun count() {
+        playgroundViewModel.addMovies()
     }
 }

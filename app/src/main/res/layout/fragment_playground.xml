@@ -1,30 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/bg"
-    tools:context=".ui.PlaygroundFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/ditto"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/ditto"
-        tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="211dp" />
+    <data>
+        <variable
+            name="fragment"
+            type="ka.el.memorygames.ui.PlaygroundFragment" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:text="0 moves"
-        android:textColor="@color/main_text_color"
-        android:layout_marginBottom="10dp"
-        android:textSize="18sp"
-        />
+        <variable
+            name="viewModel"
+            type="ka.el.memorygames.viewModel.PlaygroundViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg"
+        tools:context=".ui.PlaygroundFragment">
+
+        <ImageView
+            android:id="@+id/ditto"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:onClick="@{() -> fragment.count()}"
+            android:src="@drawable/ditto" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:text="@{(viewModel.movies &lt; 1) ? @string/move(viewModel.movies) : @string/movies(viewModel.movies)}"
+            android:textColor="@color/main_text_color"
+            android:textSize="18sp"
+            tools:text="3 movies" />
 
 
-</RelativeLayout>
+    </RelativeLayout>
+</layout>

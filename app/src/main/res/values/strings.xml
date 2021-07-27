@@ -2,4 +2,7 @@
     <string name="app_name">Memory Games</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="move">%1$d move</string>
+    <string name="movies">%1$d movies</string>
 </resources>
