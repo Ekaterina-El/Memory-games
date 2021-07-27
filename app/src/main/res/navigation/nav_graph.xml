@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/menuFragment">
+
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="ka.el.memorygames.ui.MenuFragment"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu" >
+        <action
+            android:id="@+id/action_menuFragment_to_playgroundFragment"
+            app:destination="@id/playgroundFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/playgroundFragment"
+        android:name="ka.el.memorygames.ui.PlaygroundFragment"
+        android:label="fragment_playground"
+        tools:layout="@layout/fragment_playground" />
+</navigation>

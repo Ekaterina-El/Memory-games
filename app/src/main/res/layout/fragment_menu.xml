@@ -10,9 +10,10 @@
         android:id="@+id/btn_play"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:backgroundTint="@color/main_color"
         android:text="Play"
         android:textAllCaps="false"
-        android:layout_centerInParent="true" />
+        android:textColor="@color/main_text_color" />
 
 </RelativeLayout>
