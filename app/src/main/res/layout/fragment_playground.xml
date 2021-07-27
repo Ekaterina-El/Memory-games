@@ -5,7 +5,7 @@
     <data>
         <variable
             name="fragment"
-            type="ka.el.memorygames.ui.PlaygroundFragment" />
+            type="ka.el.memorygames.ui.playground.PlaygroundFragment" />
 
         <variable
             name="viewModel"
@@ -16,14 +16,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/bg"
-        tools:context=".ui.PlaygroundFragment">
-
+        tools:context=".ui.playground.PlaygroundFragment">
+<!--
         <ImageView
             android:id="@+id/ditto"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:onClick="@{() -> fragment.count()}"
-            android:src="@drawable/ditto" />
+            android:src="@drawable/ditto" />-->
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/rv_cards"
+            />
 
         <TextView
             android:layout_width="wrap_content"

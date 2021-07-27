@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/playgroundFragment"
-        android:name="ka.el.memorygames.ui.PlaygroundFragment"
+        android:name="ka.el.memorygames.ui.playground.PlaygroundFragment"
         android:label="fragment_playground"
         tools:layout="@layout/fragment_playground" />
 </navigation>
