@@ -4,5 +4,6 @@ import android.graphics.drawable.Drawable
 
 data class CardModel(
     var imageResId: Drawable,
-    val isOpened: Boolean = false
+    var isOpened: Boolean = false,
+    var name: String = ""
 )

@@ -1,5 +1,6 @@
 package ka.el.memorygames.ui.playground
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -26,6 +27,26 @@ class PlaygroundFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private fun generateCards(): List<CardModel> {
+        val cards = mutableListOf<CardModel>()
+
+        cards.add(CardModel(resources.getDrawable(R.drawable.ditto,), false, "ditto"))
+        cards.add(CardModel(resources.getDrawable(R.drawable.jigglypuff), false, "jigglypuff"))
+        cards.add(CardModel(resources.getDrawable(R.drawable.meowth), false, "meowth"))
+        cards.add(CardModel(resources.getDrawable(R.drawable.pancham), false, "pancham"))
+        cards.add(CardModel(resources.getDrawable(R.drawable.pickachu), false, "pickachu"))
+        cards.add(CardModel(resources.getDrawable(R.drawable.piplup), false, "piplup"))
+
+        val clones = mutableListOf<CardModel>()
+        cards.forEach { card -> clones.add(card.copy()) }
+        cards.addAll(clones)
+
+        cards.shuffle()
+
+        return cards
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -43,26 +64,9 @@ class PlaygroundFragment : Fragment() {
             playgroundViewModel.addMovies()
         }
         recyclerView.adapter = playgroundAdapter
-        playgroundAdapter.setCardList(generateDummyData())
-    }
 
-    private fun generateDummyData(): List<CardModel> {
-        val cards = mutableListOf<CardModel>()
-
-        cards.add(CardModel(resources.getDrawable(R.drawable.ditto), false))
-        cards.add(CardModel(resources.getDrawable(R.drawable.ditto), false))
-        cards.add(CardModel(resources.getDrawable(R.drawable.ditto), false))
-        cards.add(CardModel(resources.getDrawable(R.drawable.ditto), false))
-        cards.add(CardModel(resources.getDrawable(R.drawable.ditto), false))
-        cards.add(CardModel(resources.getDrawable(R.drawable.ditto), false))
-        cards.add(CardModel(resources.getDrawable(R.drawable.ditto), false))
-        cards.add(CardModel(resources.getDrawable(R.drawable.ditto), false))
-        cards.add(CardModel(resources.getDrawable(R.drawable.ditto), false))
-        cards.add(CardModel(resources.getDrawable(R.drawable.ditto), false))
-        cards.add(CardModel(resources.getDrawable(R.drawable.ditto), false))
-        cards.add(CardModel(resources.getDrawable(R.drawable.ditto), false))
-
-        return cards
+        val cards = generateCards()
+        playgroundAdapter.setCardList(cards)
     }
 
 
